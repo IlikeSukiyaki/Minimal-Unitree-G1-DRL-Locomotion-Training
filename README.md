@@ -59,9 +59,9 @@ First, find your conda environment's library path:
 ```bash
 conda info --envs
 ```
-This will list your environments and their locations. Find the path for `hvgym`.
+This will list your environments and their locations. Find the path for `g1_gym`.
 
-Then, export the `LD_LIBRARY_PATH`, replacing `/path/to/conda/envs/hvgym` with the actual path from the previous command:
+Then, export the `LD_LIBRARY_PATH`, replacing `/path/to/conda/envs/g1_gym` with the actual path from the previous command:
 ```bash
 export LD_LIBRARY_PATH=/path/to/conda/envs/hvgym/lib:$LD_LIBRARY_PATH
 ```
