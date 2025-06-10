@@ -26,6 +26,27 @@ Then, install other dependencies:
 pip install numpy matplotlib
 ```
 
+### 2.2 Install Isaac Gym
+Isaac Gym is a rigid body simulation and training framework provided by Nvidia.
+
+#### 2.2.1 Download
+Download **Isaac Gym** from Nvidia's official website.
+
+#### 2.2.2 Install
+After extracting the package, navigate to the `isaacgym/python` folder and install it using the following commands:
+```bash
+cd isaacgym/python
+pip install -e .
+```
+
+#### 2.2.3 Verify Installation
+Run the following command. If a window opens displaying 1080 balls falling, the installation was successful:
+```bash
+cd examples
+python 1080_balls_of_solitude.py
+```
+If you encounter any issues, refer to the official documentation at `isaacgym/docs/index.html`.
+
 ### 3. Install Local Packages
 
 The required robotics packages are included in this repository. Install them using pip in editable mode. The order of installation is important.
@@ -119,4 +140,9 @@ cd legged_gym/sim2mujoco/deploy_mujoco
 python deploy_mujoco.py g1_27dof.yaml
 ```
 
-![Sim2Sim Deployment](assets/sim2sim.gif) 
+![Sim2Sim Deployment](assets/sim2sim.gif)
+
+---
+
+## To-Do
+- [ ] Release deployment code 
