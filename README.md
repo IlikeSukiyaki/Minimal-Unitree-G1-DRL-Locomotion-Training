@@ -145,4 +145,6 @@ python deploy_mujoco.py g1_27dof.yaml
 ---
 
 ## To-Do
-- [ ] Release deployment code 
+- [x] Release training code
+- [x] Release sim-to-sim deployment code
+- [ ] Release robot deployment code
