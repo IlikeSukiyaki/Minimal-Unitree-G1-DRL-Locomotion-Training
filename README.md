@@ -11,8 +11,8 @@ Follow these steps to set up the environment and install the required packages.
 We recommend using Conda or Mamba to manage the environment.
 
 ```bash
-conda create -n hvgym python=3.8
-conda activate hvgym
+conda create -n g1_gym python=3.8
+conda activate g1_gym
 ```
 
 ### 2. Install Dependencies
@@ -66,3 +66,42 @@ Then, export the `LD_LIBRARY_PATH`, replacing `/path/to/conda/envs/hvgym` with t
 export LD_LIBRARY_PATH=/path/to/conda/envs/hvgym/lib:$LD_LIBRARY_PATH
 ```
 To make this change permanent, add this line to your `~/.bashrc` or `~/.zshrc` file. 
+
+## User Guide
+
+### 1. Training
+
+Run the following command to start training:
+```bash
+python legged_gym/scripts/train.py --task=g1_full
+```
+
+#### Parameter Description
+*   `--task`: Required parameter; values can be `g1`, `g1_full`, etc.
+*   `--headless`: Set to `True` to run in headless mode for higher efficiency. Defaults to `False` (GUI mode).
+*   `--resume`: Resume training from a checkpoint in the logs.
+*   `--experiment_name`: Name of the experiment to run/load.
+*   `--run_name`: Name of the run to execute/load.
+*   `--load_run`: Name of the run to load; defaults to the latest run.
+*   `--checkpoint`: Checkpoint number to load; defaults to the latest file.
+*   `--num_envs`: Number of environments for parallel training.
+*   `--seed`: Random seed.
+*   `--max_iterations`: Maximum number of training iterations.
+*   `--sim_device`: Simulation computation device (e.g., `cpu` or `cuda:0`).
+*   `--rl_device`: Reinforcement learning computation device (e.g., `cpu` or `cuda:0`).
+
+**Default Training Result Directory:** `logs/<experiment_name>/<date_time>_<run_name>/model_<iteration>.pt`
+
+---
+
+### 2. Play
+
+To visualize the training results in the simulator, run the following command:
+```bash
+python legged_gym/scripts/play.py --task=g1_full
+```
+
+#### Description
+*   The parameters for `play.py` are the same as for `train.py`.
+*   By default, it loads the latest model from the most recent run in the experiment folder.
+*   You can specify other models to load using the `--load_run` and `--checkpoint` flags. 
