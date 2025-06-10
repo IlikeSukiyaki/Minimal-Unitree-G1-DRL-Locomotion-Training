@@ -1,0 +1,145 @@
+# 
+policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/g1_full/policy_gru_1_NewTest.pt"
+# policy_path: "{LEGGED_GYM_ROOT_DIR}/deploy/pre_train/g1_full/4_19_lstm_trimesh_30000.pt"
+xml_path: "{LEGGED_GYM_ROOT_DIR}/resources/robots/g1_description/g1_29dof_lock_waist_rev_1_0.xml"
+
+
+# Total simulation time
+simulation_duration: 60.0
+# Simulation time step
+simulation_dt: 0.002
+# Controller update frequency (meets the requirement of simulation_dt * controll_decimation=0.02; 50Hz)
+control_decimation: 4
+
+# Tuned gains for all DOFs (padding will be applied for non-existent DOFs)
+# Position gains (kp) for each joint
+kps: [
+      # --- LEG JOINTS ---
+      100,  # 0: left_hip_pitch_joint - Controls forward/backward rotation of left leg
+      100,  # 1: left_hip_roll_joint - Controls sideways rotation of left leg
+      100,  # 2: left_hip_yaw_joint - Controls twisting rotation of left leg
+      150,  # 3: left_knee_joint - Controls bending of left knee
+      40,   # 4: left_ankle_pitch_joint - Controls forward/backward rotation of left foot
+      40,   # 5: left_ankle_roll_joint - Controls side-to-side roll of left foot
+      
+      100,  # 6: right_hip_pitch_joint - Controls forward/backward rotation of right leg
+      100,  # 7: right_hip_roll_joint - Controls sideways rotation of right leg
+      100,  # 8: right_hip_yaw_joint - Controls twisting rotation of right leg
+      150,  # 9: right_knee_joint - Controls bending of right knee
+      40,   # 10: right_ankle_pitch_joint - Controls forward/backward rotation of right foot
+      40,   # 11: right_ankle_roll_joint - Controls side-to-side roll of right foot
+      
+      # --- TORSO JOINTS ---
+      400,  # 12: waist_yaw_joint - Controls twisting of torso/waist
+      
+      # --- LEFT ARM JOINTS ---
+      50,   # 13: left_shoulder_pitch_joint - Controls forward/backward rotation of left arm
+      50,   # 14: left_shoulder_roll_joint - Controls sideways rotation of left arm
+      50,   # 15: left_shoulder_yaw_joint - Controls twisting rotation of left arm
+      50,   # 16: left_elbow_joint - Controls bending of left elbow
+      30,   # 17: left_wrist_roll_joint - Controls roll rotation of left wrist
+      30,   # 18: left_wrist_pitch_joint - Controls pitch rotation of left wrist
+      30,   # 19: left_wrist_yaw_joint - Controls yaw rotation of left wrist
+      
+      # --- RIGHT ARM JOINTS ---
+      50,   # 20: right_shoulder_pitch_joint - Controls forward/backward rotation of right arm
+      50,   # 21: right_shoulder_roll_joint - Controls sideways rotation of right arm
+      50,   # 22: right_shoulder_yaw_joint - Controls twisting rotation of right arm
+      50,   # 23: right_elbow_joint - Controls bending of right elbow
+      30,   # 24: right_wrist_roll_joint - Controls roll rotation of right wrist
+      30,   # 25: right_wrist_pitch_joint - Controls pitch rotation of right wrist
+      30    # 26: right_wrist_yaw_joint - Controls yaw rotation of right wrist
+]
+
+# Damping gains (kd) for each joint
+kds: [
+      # --- LEG JOINTS ---
+      2,    # 0: left_hip_pitch_joint - Damping for forward/backward rotation of left leg
+      2,    # 1: left_hip_roll_joint - Damping for sideways rotation of left leg
+      2,    # 2: left_hip_yaw_joint - Damping for twisting rotation of left leg
+      4,    # 3: left_knee_joint - Damping for bending of left knee (higher for stability)
+      2,    # 4: left_ankle_pitch_joint - Damping for forward/backward rotation of left foot
+      2,    # 5: left_ankle_roll_joint - Damping for side-to-side roll of left foot
+      
+      2,    # 6: right_hip_pitch_joint - Damping for forward/backward rotation of right leg
+      2,    # 7: right_hip_roll_joint - Damping for sideways rotation of right leg
+      2,    # 8: right_hip_yaw_joint - Damping for twisting rotation of right leg
+      4,    # 9: right_knee_joint - Damping for bending of right knee (higher for stability)
+      2,    # 10: right_ankle_pitch_joint - Damping for forward/backward rotation of right foot
+      2,    # 11: right_ankle_roll_joint - Damping for side-to-side roll of right foot
+      
+      # --- TORSO JOINTS ---
+      2,    # 12: waist_yaw_joint - Damping for twisting of torso/waist
+      
+      # --- LEFT ARM JOINTS ---
+      2,    # 13: left_shoulder_pitch_joint - Damping for forward/backward rotation of left arm
+      2,    # 14: left_shoulder_roll_joint - Damping for sideways rotation of left arm
+      2,    # 15: left_shoulder_yaw_joint - Damping for twisting rotation of left arm
+      2,    # 16: left_elbow_joint - Damping for bending of left elbow
+      2,    # 17: left_wrist_roll_joint - Damping for roll rotation of left wrist
+      2,    # 18: left_wrist_pitch_joint - Damping for pitch rotation of left wrist
+      2,    # 19: left_wrist_yaw_joint - Damping for yaw rotation of left wrist
+      
+      # --- RIGHT ARM JOINTS ---
+      2,    # 20: right_shoulder_pitch_joint - Damping for forward/backward rotation of right arm
+      2,    # 21: right_shoulder_roll_joint - Damping for sideways rotation of right arm
+      2,    # 22: right_shoulder_yaw_joint - Damping for twisting rotation of right arm
+      2,    # 23: right_elbow_joint - Damping for bending of right elbow
+      2,    # 24: right_wrist_roll_joint - Damping for roll rotation of right wrist
+      2,    # 25: right_wrist_pitch_joint - Damping for pitch rotation of right wrist
+      2     # 26: right_wrist_yaw_joint - Damping for yaw rotation of right wrist
+]
+
+# Default angles for all DOFs - based on training config
+# These are the resting/home positions for each joint
+default_angles: [
+      # --- LEG JOINTS ---
+      -0.1,  # 0: left_hip_pitch_joint - Slight backward tilt of left leg
+      0.0,   # 1: left_hip_roll_joint - Neutral sideways position of left leg
+      0.0,   # 2: left_hip_yaw_joint - Neutral rotation of left leg
+      0.3,   # 3: left_knee_joint - Slight bend of left knee
+      -0.2,  # 4: left_ankle_pitch_joint - Slight upward angle of left foot
+      0.0,   # 5: left_ankle_roll_joint - Neutral roll of left foot
+      
+      -0.1,  # 6: right_hip_pitch_joint - Slight backward tilt of right leg
+      0.0,   # 7: right_hip_roll_joint - Neutral sideways position of right leg
+      0.0,   # 8: right_hip_yaw_joint - Neutral rotation of right leg
+      0.3,   # 9: right_knee_joint - Slight bend of right knee
+      -0.2,  # 10: right_ankle_pitch_joint - Slight upward angle of right foot
+      0.0,   # 11: right_ankle_roll_joint - Neutral roll of right foot
+      
+      # --- TORSO JOINTS ---
+      0.0,   # 12: waist_yaw_joint - Neutral rotation of waist
+      
+      # --- LEFT ARM JOINTS ---
+      0.3,   # 13: left_shoulder_pitch_joint - Forward position of left arm
+      0.3,   # 14: left_shoulder_roll_joint - Outward position of left arm
+      0.0,   # 15: left_shoulder_yaw_joint - Neutral rotation of left arm
+      0.9,   # 16: left_elbow_joint - Bent position of left elbow
+      0.0,   # 17: left_wrist_roll_joint - Neutral roll of left wrist
+      0.0,   # 18: left_wrist_pitch_joint - Neutral pitch of left wrist
+      0.0,   # 19: left_wrist_yaw_joint - Neutral yaw of left wrist
+      
+      # --- RIGHT ARM JOINTS ---
+      0.3,   # 20: right_shoulder_pitch_joint - Forward position of right arm
+      -0.3,  # 21: right_shoulder_roll_joint - Outward position of right arm (negative for right side)
+      0.0,   # 22: right_shoulder_yaw_joint - Neutral rotation of right arm
+      0.9,   # 23: right_elbow_joint - Bent position of right elbow
+      0.0,   # 24: right_wrist_roll_joint - Neutral roll of right wrist
+      0.0,   # 25: right_wrist_pitch_joint - Neutral pitch of right wrist
+      0.0    # 26: right_wrist_yaw_joint - Neutral yaw of right wrist
+]
+
+# Scaling factors
+ang_vel_scale: 0.25     # Scale factor for angular velocity in observations
+dof_pos_scale: 1.0      # Scale factor for joint positions in observations
+dof_vel_scale: 0.05     # Scale factor for joint velocities in observations
+action_scale: 0.25      # Scale factor for action outputs (smaller = more conservative movements)
+cmd_scale: [2.0, 2.0, 0.25]  # Scale factors for [lin_vel_x, lin_vel_y, ang_vel_z] commands
+
+# The policy expects 27 DOFs, but actual URDF has less DOFs
+# Padding will be applied to match the expected dimensions
+num_actions: 27         # Number of action outputs from policy (27 joint positions)
+num_obs: 90             # Observation size: 3(ang_vel) + 3(gravity) + 3(cmd) + 27(dof_pos) + 27(dof_vel) + 27(actions)
+
+cmd_init: [0.5, 0, 0]   # Initial command [lin_vel_x, lin_vel_y, ang_vel_z] (forward at 0.5 m/s) 
