@@ -101,6 +101,8 @@ To visualize the training results in the simulator, run the following command:
 python legged_gym/scripts/play.py --task=g1_full
 ```
 
+![Training Visualization](assets/vis_1.gif)
+
 #### Description
 *   The parameters for `play.py` are the same as for `train.py`.
 *   By default, it loads the latest model from the most recent run in the experiment folder.
@@ -115,4 +117,6 @@ To deploy the trained policy in a MuJoCo simulation, run the following commands:
 ```bash
 cd legged_gym/sim2mujoco/deploy_mujoco
 python deploy_mujoco.py g1_27dof.yaml
-``` 
+```
+
+![Sim2Sim Deployment](assets/sim2sim.gif) 
