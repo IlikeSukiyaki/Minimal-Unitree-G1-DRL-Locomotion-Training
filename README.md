@@ -105,3 +105,14 @@ python legged_gym/scripts/play.py --task=g1_full
 *   The parameters for `play.py` are the same as for `train.py`.
 *   By default, it loads the latest model from the most recent run in the experiment folder.
 *   You can specify other models to load using the `--load_run` and `--checkpoint` flags. 
+
+---
+
+### 3. Sim-to-Sim Deployment (MuJoCo)
+
+To deploy the trained policy in a MuJoCo simulation, run the following commands:
+
+```bash
+cd legged_gym/sim2mujoco/deploy_mujoco
+python deploy_mujoco.py g1_27dof.yaml
+``` 
